@@ -19,13 +19,13 @@ download.file(Data_URL, paste(baseDir,"/HPC.zip", sep = ""))
 unzip(paste(baseDir, "/HPC.zip", sep = ""), exdir = paste(baseDir, "/HPC", sep = ""))
 
 HPC_Data <- read.delim(paste(baseDir, "/HPC/household_power_consumption.txt", sep = ""),
-                       header = TRUE, sep = ";")
+                       header = TRUE, sep = ";", na.strings = "?")
 
 HPC_Data <- subset(HPC_Data, Date == "1/2/2007" | Date == "2/2/2007")
 
 HPC_Data$Global_active_power <- as.numeric(HPC_Data$Global_active_power)
 
-hist((HPC_Data$Global_active_power)/500, col = "red", main = "Global Active Power", 
+hist((HPC_Data$Global_active_power), col = "red", main = "Global Active Power", 
      xlab = "Global Active Power (kilowatts)", ylim = c(0,1300), breaks = 12)
 
 dev.copy(png, "plot1.png")

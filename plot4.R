@@ -19,7 +19,7 @@ download.file(Data_URL, paste(baseDir,"/HPC.zip", sep = ""))
 unzip(paste(baseDir, "/HPC.zip", sep = ""), exdir = paste(baseDir, "/HPC", sep = ""))
 
 HPC_Data <- read.delim(paste(baseDir, "/HPC/household_power_consumption.txt", sep = ""),
-                       header = TRUE, sep = ";")
+                       header = TRUE, sep = ";", na.strings = "?")
 
 HPC_Data <- subset(HPC_Data, Date == "1/2/2007" | Date == "2/2/2007")
 
